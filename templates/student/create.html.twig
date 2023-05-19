@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<h3 class="mt-5 mb-3 text-center">Add New Student</h3>
+ <div class="container">
+  <div class="row">
+  
+
+  
+
+     <div class="col-md-6 offset-md-3">
+     {{ form_start(form)}}
+
+    <div class="form-group mb-2">
+    {{ form_label(form.cin) }}
+     {{ form_widget(form.cin,{'attr':{'class':'novalidate'}})}}
+     </div>
+      <div class="form-group mb-2">
+       {{ form_label(form.nom) }}
+       {{ form_widget(form.nom,{'attr':{'class':'form-control'}})}}
+    </div>
+    <div class="form-group mb-2">
+       {{ form_label(form.prenom) }}
+       {{ form_widget(form.prenom,{'attr':{'class':'form-control'}})}}
+    </div>
+    <div class="form-group mb-2">
+       {{ form_label(form.specialite) }}
+       {{ form_widget(form.specialite,{'attr':{'class':'form-control'}})}}
+    </div>
+     <div class="form-group mb-2">
+     <button class="btn btn-info text-white mt-2 ">Add</button>
+     {{ form_end(form)}}
+     </div>
+     </div>
+ </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container mt-4">
+
+{{ form_start(form) }} 
+<div class="form-row align-items-end"> 
+<div class="col"> {{ form_row (form.cin,{'attr':{'placeholder':'Search by National ID'}}) }} </div>
+ <div class="col"> <div class="form-group"> 
+<button type="submit" class="btn btn-success mt-2">Research</button> </div>
+ </div> </div> 
+ {{ form_end(form) }}
+
+
+ <table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">S_Number</th>
+      <th scope="col">National ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Second Name</th>
+      <th scope="col">Speciality</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for data in list %}
+   <tr>
+      <th scope="row">{{data.id}}</th>
+      <td>{{data.cin}}</td>
+      <td>{{data.nom}}</td>
+      <td>{{data.prenom}}</td>
+      <td>{{data.specialite}}</td>
+      <td>
+      <a class="btn btn-warning" href="{{ path('update',{'id':data.id})}}">Update</a>
+         <a class="btn btn-danger" href="{{ path('delete',{'id':data.id})}}" onclick="return confirm('Do you want to delete this student?');">Delete</a>
+      </td>
+    </tr>
+   {% endfor %}
+  </tbody>
+ </table>
+ 
+</div>
+{% for message in app.flashes('notice')%}
+   <div class="alert alert-success mt-4 mb-4">
+   {{message}}
+   </div>
+   {%  endfor %}
+ {% endblock %}
